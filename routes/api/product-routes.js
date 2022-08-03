@@ -8,7 +8,8 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 router.get('/', tryCatch(async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
-  const products = await Product.getJson({ include: [{ model: Category }, { model: Tag }] })
+  // const products = await Product.getJson({ include: [{ model: Category }, { model: Tag }] })
+  const products = await Product.getJson({ include: [{ model: Category }, { model: Tag, through: { attributes: [] } }] })
   res.json(products)
 }));
 
@@ -16,7 +17,12 @@ router.get('/', tryCatch(async (req, res) => {
 router.get('/:id', tryCatch(async (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
-  const product = await Product.getJsonByPk(req.params.id, { include: [{ model: Category }, { model: Tag }] })
+  const product = await Product.getJsonByPk(req.params.id, {
+    include: [
+      { model: Category },
+      { model: Tag, through: { attributes: [] } }
+    ]
+  })
   res.json(product)
 }));
 
@@ -97,6 +103,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', tryCatch(async (req, res) => {
   // delete one product by its `id` value
   const result = await Product.destroy({ where: { id: req.params.id } })
+  res.json(result)
 }));
 
 module.exports = router;
