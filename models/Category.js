@@ -1,8 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
+const MyModel = require('./MyModel.js');
 
-class Category extends Model { }
+class Category extends MyModel { }
 
 Category.init(
   {
