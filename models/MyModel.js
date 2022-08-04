@@ -5,7 +5,7 @@ class MyModel extends Model {
     return this.findAll(...args).then(found => found.map(i => i.getJson()))
   }
   static getJsonByPk(...args) {
-    return this.findByPk(...args).then(found => found.getJson())
+    return this.findByPk(...args).then(found => found ? found.getJson() : null)
   }
 
   getJson() {
