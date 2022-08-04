@@ -21,6 +21,7 @@ Uses Sequelize as an ORM to manage Products, Categories, and Product Tags, using
 
 ## Demo
 [Walkthrough Video](https://drive.google.com/file/d/1AyjUarVAmr_jwiv7Ttbu0q6_UiHei-2_/view?usp=sharing)
+
 ![Walkthrough GIF](./demo/e-commerce-orm-demo.gif)
 
 ## Products
