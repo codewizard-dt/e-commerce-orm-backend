@@ -1,5 +1,8 @@
 const { Model } = require('sequelize')
 
+/**
+ * Custom model to handle the tedium of `this.get({plain:true})` 
+ */
 class MyModel extends Model {
   static getJson(...args) {
     return this.findAll(...args).then(found => found.map(i => i.getJson()))
